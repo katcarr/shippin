@@ -10,10 +10,12 @@ $(function(){
   });
 
 
-  $("select").change(function() {
+
+  $("#country-selector").change(function() {
     var country = $("select").val();
     if (country === "United States") {
-      $("#zip").show();
+      $(".hiddenStuff").show();
+      $('#state-selector').selectToAutocomplete();
     }
 
   });
@@ -25,9 +27,6 @@ $(function(){
 
 (function($){
   $(function(){
-    $('select').selectToAutocomplete();
-    $('form').submit(function(){
-
-    });
+    $('#country-selector').selectToAutocomplete();
   });
 })(jQuery);
