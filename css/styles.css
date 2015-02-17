@@ -28,7 +28,7 @@ body {
   background-color: #19053A;
 }
 
-.hiddenStuff {
+.hiddenFrom, .hiddenTo {
   display: none;
 }
 
