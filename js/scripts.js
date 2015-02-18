@@ -11,6 +11,10 @@ $(function(){
     var width = parseInt($("#width").val());
     var weight = parseInt($("#weight").val());
 
+    $(".form-group input").val("");
+    $("select").val("");
+
+
     var fromAddress = { country: fromCountry, state: fromState, zip: fromZip };
     var toAddress = { country: toCountry, state: toState, zip: toZip };
     var dimensions = { height: height, length: length, width: width };
@@ -22,10 +26,29 @@ $(function(){
     };
     packageToShip.cost = cost;
 
+    var draw = function() {
+      var canvas = document.getElementById('canvas');
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        ctx.beginPath();
+        ctx.moveTo(0,300); // starting point at lower left corner of 150x150 grid
+        ctx.lineTo(this.dimensions.length,300); // draw side1 as bottom
+        ctx.lineTo(this.dimensions.length,300-this.dimensions.height);
+        ctx.lineTo(0, 300-this.dimensions.height);
+        ctx.fill();
+      }
+    }
+    packageToShip.draw = draw;
+
+
     $("#cost").text(packageToShip.cost());
     $("#country-result").text(packageToShip.to.country);
 
     $("#hiddenCost").show();
+    packageToShip.draw();
 
     event.preventDefault();
   });
