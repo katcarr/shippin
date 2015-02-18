@@ -22,6 +22,10 @@ $(function(){
     };
     packageToShip.cost = cost;
 
+    $("#cost").text(packageToShip.cost());
+    $("#country-result").text(packageToShip.to.country);
+
+    $("#hiddenCost").show();
 
     event.preventDefault();
   });
@@ -43,7 +47,6 @@ $(function(){
       $(".hiddenTo").show();
       $('#to-state').selectToAutocomplete();
     }
-
   });
 
 
