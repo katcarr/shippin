@@ -33,11 +33,15 @@ $(function(){
 
         ctx.clearRect(0,0,canvas.width,canvas.height);
 
+        var l = this.dimensions.length * 3;
+        var h = this.dimensions.height * 3;
+
+        ctx.fillStyle = "#AA6C39";
         ctx.beginPath();
-        ctx.moveTo(0,300); // starting point at lower left corner of 150x150 grid
-        ctx.lineTo(this.dimensions.length,300); // draw side1 as bottom
-        ctx.lineTo(this.dimensions.length,300-this.dimensions.height);
-        ctx.lineTo(0, 300-this.dimensions.height);
+        ctx.moveTo(0, 0); // starting point at upper left corner of grid
+        ctx.lineTo(l, 0); // draw side1 as top
+        ctx.lineTo(l, h);
+        ctx.lineTo(0, h);
         ctx.fill();
       }
     }
